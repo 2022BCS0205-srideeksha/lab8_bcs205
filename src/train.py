@@ -26,6 +26,9 @@ r2 = r2_score(y_test, pred)
 
 dataset_size = len(X_train)
 
-print(f"Dataset Size: {dataset_size}")
-print(f"RMSE: {rmse}")
-print(f"R2: {r2}")
+rmse = mean_squared_error(y_test, pred, squared=False)
+r2 = r2_score(y_test, pred)
+
+print("Dataset Size:", len(X_train))
+print("RMSE:", rmse)
+print("R2:", r2)
