@@ -24,11 +24,11 @@ model.fit(X_train, y_train)
 # Predictions
 predictions = model.predict(X_test)
 
-# Metrics
+
 rmse = mean_squared_error(y_test, predictions, squared=False)
 r2 = r2_score(y_test, predictions)
 
-# IMPORTANT: print metrics for pipeline
+# Print metrics (important for GitHub Actions)
 print("Dataset Size:", len(X_train))
 print("RMSE:", rmse)
 print("R2:", r2)
