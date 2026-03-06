@@ -37,4 +37,16 @@ jobs:
 
     - name: Train Model
       run: |
-        python src/train.py
+        python src/train.py | tee metrics.txt
+
+    - name: Publish Metrics
+      run: |
+        echo "## Training Results (Version 1)" >> $GITHUB_STEP_SUMMARY
+        echo "Dataset Size:" >> $GITHUB_STEP_SUMMARY
+        grep "Dataset Size" metrics.txt >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "RMSE:" >> $GITHUB_STEP_SUMMARY
+        grep "RMSE" metrics.txt >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "R2 Score:" >> $GITHUB_STEP_SUMMARY
+        grep "R2" metrics.txt >> $GITHUB_STEP_SUMMARY
